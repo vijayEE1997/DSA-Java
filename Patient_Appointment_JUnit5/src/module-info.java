@@ -1,0 +1,2 @@
+module jUnit5 {
+}
