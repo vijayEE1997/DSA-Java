@@ -60,4 +60,10 @@ public class ClinicCalender {
 				.anyMatch(app->app.getAppointmentDateTime().toLocalDate().equals(today));
 	}
 
+	public List<PatientAppointment> getTomorrowAppointments() {
+		return this.appointments.stream()
+				.filter(app->app.getAppointmentDateTime().toLocalDate().equals(today.plusDays(1)))
+				.collect(Collectors.toList());
+	}
+
 }
