@@ -1,5 +1,6 @@
 package patientintake;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class ClinicMain {
 	
 	public static void main(String[] args) throws Throwable {
 		
-		calender = new ClinicCalender();
+		calender = new ClinicCalender(LocalDate.now());
 		Scanner s = new Scanner(System.in);
 		System.out.println("Welcome to the Patient Intake Computer System! \n\n");
 		String lastOption ="";
@@ -17,7 +18,7 @@ public class ClinicMain {
 			lastOption = displayMenu(s);
 		}
 		
-		System.out.println("\nexiting System...\n");
+		System.out.println("\nExiting System...\n");
 	}
 
 	private static String displayMenu(Scanner s) throws Throwable{
@@ -25,6 +26,7 @@ public class ClinicMain {
 		System.out.println("Please Select an option:");
 		System.out.println("1. Enter a Patient Apppointment");
 		System.out.println("2. View All Appointments");
+		System.out.println("3. View Today's Appointments");
 		System.out.println("X. Exit System.");
 		System.out.println("Option: ");
 		
@@ -35,9 +37,23 @@ public class ClinicMain {
 					return option;
 		case "2" : performAllAppointments(s);
 					return option;
+		case "3" : performTodayAppointments(s);
+					return option;
 		default  : System.out.println("Invalid option, please re-enter."); 
 					return option;
 		}
+	}
+
+	private static void performTodayAppointments(Scanner s) {
+System.out.println("\n\nToday's Appointments in System");
+		
+		for(PatientAppointment p: calender.getTodayAppointments()) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy hh:mm: a");
+			String apptTime = p.getAppointmentDateTime().format(formatter);
+			System.out.println(String.format("%s: %s, %s\t\tDoctor: %s",apptTime,p.getPatientLastName(),p.getPatientFirstName(),p.getDoctor().getName()));
+		}
+		
+		System.out.println("\nPress any key to continue...");
 	}
 
 	private static void performAllAppointments(Scanner s) {
