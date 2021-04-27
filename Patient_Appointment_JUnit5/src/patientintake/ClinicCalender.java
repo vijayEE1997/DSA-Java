@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ClinicCalender {
@@ -63,6 +64,12 @@ public class ClinicCalender {
 	public List<PatientAppointment> getTomorrowAppointments() {
 		return this.appointments.stream()
 				.filter(app->app.getAppointmentDateTime().toLocalDate().equals(today.plusDays(1)))
+				.collect(Collectors.toList());
+	}
+
+	public List<PatientAppointment> getUpcomingAppointments() {
+		return appointments.stream()
+				.filter(p->p.getAppointmentDateTime().toLocalDate().isAfter(today))
 				.collect(Collectors.toList());
 	}
 
