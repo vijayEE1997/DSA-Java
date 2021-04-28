@@ -8,8 +8,8 @@ public class AirportTest {
 	
 	@Test
 	public void testAirport() {
-		Flight ecoFlight = new Flight("1",'E');
-		Flight busFlight = new Flight("2",'B');
+		Flight ecoFlight = new EconomyFlight("1");
+		Flight busFlight = new BusinessFlight("2");
 		
 		Passenger john = new Passenger("John",true);
 		Passenger mike = new Passenger("Mike",false);
