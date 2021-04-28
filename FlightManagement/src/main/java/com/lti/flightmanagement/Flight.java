@@ -22,10 +22,6 @@ public class Flight {
 	public List<Passenger> getPassengersList() {
 		return Collections.unmodifiableList(passengersList);
 	}
-
-	public char getFlightType() {
-		return flightType;
-	}
 	
 	public boolean addPassesnger(Passenger passenger) {
 		switch(flightType) {
