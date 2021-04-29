@@ -24,4 +24,26 @@ public class AirportTest {
 		assertEquals(false,busFlight.addPassesnger(mike));
 		assertEquals(false,busFlight.removePassesnger(mike));
 	}
+	
+	@Test
+	public void businessFlightVipPassenger() {
+		Flight busFlight = new BusinessFlight("2");
+		Passenger john = new Passenger("John",true);
+
+		assertEquals(true,busFlight.addPassesnger(john));
+		assertEquals(1,busFlight.getPassengersList().size());
+		assertEquals(false,busFlight.removePassesnger(john));
+		assertEquals(1,busFlight.getPassengersList().size());
+	}
+	
+	@Test
+	public void businessFlightUsualPassenger() {
+		Flight busFlight = new BusinessFlight("2");
+		Passenger mike = new Passenger("Mike",false);
+
+		assertEquals(false,busFlight.addPassesnger(mike));
+		assertEquals(0,busFlight.getPassengersList().size());
+		assertEquals(false,busFlight.removePassesnger(mike));
+		assertEquals(0,busFlight.getPassengersList().size());
+	}
 }
