@@ -13,6 +13,10 @@ public abstract class Flight {
 		this.id = id;
 	}
 
+	public String getId() {
+		return id;
+	}
+
 	public List<Passenger> getPassengersList() {
 		return Collections.unmodifiableList(passengersList);
 	}

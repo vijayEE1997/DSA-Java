@@ -10,7 +10,9 @@ public class Passenger {
 		this.name = name;
 		this.vip = vip;
 	}
-
+	public String getName() {
+		return name;
+	}
 	public boolean isVip() {
 		return vip;
 	}
