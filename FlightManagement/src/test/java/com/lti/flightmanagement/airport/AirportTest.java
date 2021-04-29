@@ -1,4 +1,4 @@
-package com.lti.flightmanagement;
+package com.lti.flightmanagement.airport;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +13,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
+
+import com.lti.flightmanagement.airport.BusinessFlight;
+import com.lti.flightmanagement.airport.EconomyFlight;
+import com.lti.flightmanagement.airport.Flight;
+import com.lti.flightmanagement.airport.Passenger;
+import com.lti.flightmanagement.airport.PremiumFlight;
 
 public class AirportTest {
 	
@@ -88,7 +94,6 @@ public class AirportTest {
 					);
 		}
 		
-		@Test
 		@DisplayName("Unique Usual Passenger")
 		@RepeatedTest(5)
 		public void usualPassengerAddOnlyOnce(RepetitionInfo i){

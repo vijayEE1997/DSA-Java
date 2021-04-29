@@ -1,4 +1,4 @@
-package com.lti.flightmanagement;
+package com.lti.flightmanagement.airport;
 
 public class PremiumFlight extends Flight{
 
