@@ -2,10 +2,16 @@ package com.lti.flightmanagement;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
 public class AirportTest {
@@ -41,7 +47,7 @@ public class AirportTest {
 					()->assertEquals(0,busFlight.getPassengersList().size())
 					);
 		}
-		
+				
 		@Test
 		@DisplayName("VIP Passenger")
 		public void vipPassenger() {
@@ -75,10 +81,26 @@ public class AirportTest {
 					()->assertEquals("1",ecoFlight.getId()),
 					()->assertEquals(true,ecoFlight.addPassesnger(mike)),
 					()->assertEquals(1,ecoFlight.getPassengersList().size()),
-					()->assertEquals("Mike",ecoFlight.getPassengersList().get(0).getName()),
+					()->assertTrue(ecoFlight.getPassengersList().contains(mike)),
 					
 					()->assertEquals(true,ecoFlight.removePassesnger(mike)),
 					()->assertEquals(0,ecoFlight.getPassengersList().size())
+					);
+		}
+		
+		@Test
+		@DisplayName("Unique Usual Passenger")
+		@RepeatedTest(5)
+		public void usualPassengerAddOnlyOnce(RepetitionInfo i){
+			
+			for(int j=0;j<i.getCurrentRepetition();j++) {
+				ecoFlight.addPassesnger(mike);
+			}
+
+			assertAll(
+					()->assertEquals(1,ecoFlight.getPassengersList().size()),
+					()->assertTrue(ecoFlight.getPassengersList().contains(mike)),
+					()->assertTrue(new ArrayList<>(ecoFlight.getPassengersList()).get(0).getName().equals("Mike"))
 					);
 		}
 		
@@ -90,7 +112,7 @@ public class AirportTest {
 					()->assertEquals("1",ecoFlight.getId()),
 					()->assertEquals(true,ecoFlight.addPassesnger(john)),
 					()->assertEquals(1,ecoFlight.getPassengersList().size()),
-					()->assertEquals("John",ecoFlight.getPassengersList().get(0).getName()),
+					()->assertTrue(ecoFlight.getPassengersList().contains(john)),
 					
 					()->assertEquals(false,ecoFlight.removePassesnger(john)),
 					()->assertEquals(1,ecoFlight.getPassengersList().size())
