@@ -7,18 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
-
-import com.lti.flightmanagement.airport.BusinessFlight;
-import com.lti.flightmanagement.airport.EconomyFlight;
-import com.lti.flightmanagement.airport.Flight;
-import com.lti.flightmanagement.airport.Passenger;
-import com.lti.flightmanagement.airport.PremiumFlight;
 
 public class AirportTest {
 	

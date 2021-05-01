@@ -11,8 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import com.lti.flightmanagement.MockitoExtension;
-import com.lti.flightmanagement.aircondition.Sensor;
-import com.lti.flightmanagement.aircondition.Thermometer;
 
 
 @ExtendWith(MockitoExtension.class)
